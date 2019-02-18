@@ -10,7 +10,7 @@ If it is not equal, an error will be raised, otherwise a message will be sent to
 
 Something need to be done in future for the project:
 
-The process of receiving the order by message and handling it is not included here. We will make the order manually every time. 
+The process of receiving the order by message and handling it is not included here. We will make the order manually every time.
 
 
 
@@ -102,6 +102,7 @@ You can see your [test coverage](https://github.com/makersacademy/course/blob/ma
 We will write the irb tests(feature tests.)
 
 require "./lib/customer.rb"
+
 customer = Customer.new(1234)
 
 ,,,, Now we are able to make a customer with a phone number."
@@ -110,8 +111,11 @@ customer = Customer.new(1234)
 ,,,, In the next step, we must be able to make a restaurant.
 
 require "./lib/customer.rb"
+
 customer = Customer.new(1234)
+
 require "./lib/restaurant.rb"
+
 restaurant = Restaurant.new()
 
 ,,,, In the next step, we when we call the method "ask_order" on a restaurant object and with the customer number as an argument, the customer with the phone number should receive the list of dishes and the order in which he or she should send the order.
@@ -123,9 +127,13 @@ There are something done in order to make the problem solvable.
 so the next feature test will be the below thing:
 
 require "./lib/customer.rb"
+
 customer = Customer.new(ENV['MY_NUMBER'])
+
 require "./lib/restaurant.rb"
+
 restaurant = Restaurant.new()
+
 restaurant.ask_order(customer)
 
 After using the above commands in irb, I am supposed to receive a message on my phone, Asking me about the order I want to make. so, we command the code in "irb" to see what happens.
@@ -133,9 +141,13 @@ After using the above commands in irb, I am supposed to receive a message on my 
 After the previous steps, we suppose we have the order of a customer in a string including the number of each dish, name of dish, and finally the sum of the number of all dishes e.g. 1, meat dish, 2, pesceterian, 3. at first, we want an error when the sum of the dishes is not correct. so, as a feature test in irb, we will have the following:
 
 require "./lib/customer.rb"
+
 customer = Customer.new(ENV['MY_NUMBER'])
+
 require "./lib/restaurant.rb"
+
 restaurant = Restaurant.new()
+
 restaurant.check_order("1, meat dish, 4, pesceterian, 10")
 
 ,,,, We want an error to be raised by the above order, because 10 is not the sum of 4 and 1...
@@ -145,9 +157,13 @@ Here we will have some assumption. We will only test if the sum is correct or no
 Now, we want to send a message to a customer and say the order was placed and the food will be delivered in 1 hour from now.
 
 require "./lib/customer.rb"
+
 customer = Customer.new(ENV['MY_NUMBER'])
+
 require "./lib/restaurant.rb"
+
 restaurant = Restaurant.new()
+
 restaurant.confirmation_sending("1, meat dish, 4, pesceterian, 5")
 
 After the above commands done on the irb, I should receive a message telling that my order was placed and it will be delivered in an hour.
