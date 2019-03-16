@@ -28,9 +28,7 @@ class Restaurant
   def check_order(order_string)
     order_split = order_splitting(order_string)
     order_numbers = order_number_array(order_split)
-    if order_numbers[0..(order_numbers.length - 2)].sum != order_numbers.last
-      raise "Sum of dishes is not correct"
-    end
+    correct_sum?(order_numbers)
   end
 
   def confirmation_sending(customer, order_string, twilio_class = Twilio::REST::Client)
@@ -66,5 +64,9 @@ class Restaurant
 
   def confirmation_message(time_class = Time)
     "Thank you! Your order was placed and will be delivered before #{time_class.new().hour+1}:#{Time.new().min} "
+  end
+
+  def correct_sum?(order_numbers)
+    raise "Sum of dishes is not correct" if order_numbers[0..(order_numbers.length - 2)].sum != order_numbers.last
   end
 end
