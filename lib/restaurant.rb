@@ -1,4 +1,4 @@
-require_relative "./customer.rb"
+# require_relative "./customer.rb"
 require "twilio-ruby"
 require "time"
 
@@ -18,10 +18,10 @@ class Restaurant
   def initialize
   end
 
-  def ask_order(customer, twilio_class = Twilio::REST::Client)
+  def ask_order(restaurant, customer, twilio_class = Twilio::REST::Client)
     client = twilio_class.new(TWILIO_SID, TWILIO_TOKEN)
     client.messages.create(from: TWILIO_NUMBER, to: customer.phone_number(),
-    body: order_taking_message
+    body: order_taking_message(restaurant)
     )
   end
 
@@ -39,15 +39,13 @@ class Restaurant
     )
   end
 
-  private
-
-  def order_taking_message
-    "Please submit your order from the menu below.#{DISHES}
+  def order_taking_message(restaurant)
+    "Please submit your order from the menu below.#{restaurant.menue}
     Please write your order in the following format:
     Quanitity of the dish, name of the dish, sum of dishes.
     e.g. 1, meat dish, 2, pesceterian dish, 3 "
   end
-
+  private
   def order_splitting(order_string)
     order_string.split(",")
   end
@@ -63,7 +61,7 @@ class Restaurant
   end
 
   def confirmation_message(time_class = Time)
-    "Thank you! Your order was placed and will be delivered before #{time_class.new().hour+1}:#{Time.new().min} "
+    "Thank you! Your order was placed and will be delivered before #{time_class.new().hour+1}:#{time_class.new().min} "
   end
 
   def correct_sum?(order_numbers)
