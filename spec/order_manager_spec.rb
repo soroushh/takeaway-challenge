@@ -1,10 +1,10 @@
-require "restaurant"
+require "order_manager"
 require "customer"
 
-describe Restaurant do
+describe Order_manager do
 
   it "We are able to make a restaurant" do
-    restaurant = Restaurant.new()
+    restaurant = Order_manager.new()
   end
   describe "# ask_order" do
     it "We can ask order from the customers." do
@@ -46,12 +46,12 @@ describe Restaurant do
     it "We can take the order message from a restaurant" do
       message_double = double()
       restaurant_double = double(menue: message_double)
-      restaurant = Restaurant.new()
+      order_manager = Order_manager.new()
      a ="Please submit your order from the menu below.#{message_double}
     Please write your order in the following format:
     Quanitity of the dish, name of the dish, sum of dishes.
     e.g. 1, meat dish, 2, pesceterian dish, 3 "
-      expect(restaurant.order_taking_message(restaurant_double)).to eq a
+      expect(order_manager.order_taking_message(restaurant_double)).to eq a
     end
   end
 end

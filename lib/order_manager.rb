@@ -2,18 +2,13 @@
 require "twilio-ruby"
 require "time"
 
-class Restaurant
+class Order_manager
   # In order to apply security when using the twilo library for sending
   # messages to customers, we save the NUMBER, SID and TOKEN of Twilio
   # as environment variables.
   TWILIO_NUMBER = ENV['TWILIO_NUMBER']
   TWILIO_TOKEN = ENV['TWILIO_TOKEN']
   TWILIO_SID = ENV['TWILIO_SID']
-
-  DISHES = {
-  "meat dish" => "£10",
-  "vegeterian dish" => "£15",
-  "pesceterian dish" => "£20" }
 
   def initialize
   end
