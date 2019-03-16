@@ -8,7 +8,7 @@ describe Order_manager do
   end
   describe "# ask_order" do
     it "We can ask order from the customers." do
-      restaurant_double = double(menue: "abc")
+      restaurant_double = double(list: "abc")
       customer_double = double()
       messages_double = double()
       client_double = double(messages: messages_double)
@@ -45,7 +45,7 @@ describe Order_manager do
   describe "We can take the order message from a restaurant" do
     it "We can take the order message from a restaurant" do
       message_double = double()
-      restaurant_double = double(menue: message_double)
+      restaurant_double = double(list: message_double)
       order_manager = Order_manager.new()
      a ="Please submit your order from the menu below.#{message_double}
     Please write your order in the following format:

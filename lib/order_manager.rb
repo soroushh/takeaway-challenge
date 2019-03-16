@@ -35,7 +35,7 @@ class Order_manager
   end
 
   def order_taking_message(restaurant)
-    "Please submit your order from the menu below.#{restaurant.menue}
+    "Please submit your order from the menu below.#{restaurant.list}
     Please write your order in the following format:
     Quanitity of the dish, name of the dish, sum of dishes.
     e.g. 1, meat dish, 2, pesceterian dish, 3 "
