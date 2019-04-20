@@ -1,5 +1,10 @@
 # In this project, we will try to write an app for making orders from a restaurant by texting messages.
 
+
+<img src="./Model.png" />
+
+
+
 The procedure is that we receive a message from the restaurant which shows us the dishes and their price.
 
 we will send back a message to the restaurant which includes the number of each dish we want, the dish name and a number at the end of the order showing the sum of the dishes we have ordered.(eg "1, burger, 2, fish, 3")
