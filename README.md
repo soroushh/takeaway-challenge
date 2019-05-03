@@ -1,11 +1,10 @@
-# In this project, we will try to write an app for making orders from a restaurant by texting messages.
-
+# In this project, we will try to write a program for handling the takeaway order for a restaurant.
 
 <img src="./Model.png" />
 
 
 
-The procedure is that we receive a message from the restaurant which shows us the dishes and their price.
+The procedure is that we receive a message from the restaurant which shows us the dishes and their price of the restaurant.
 
 we will send back a message to the restaurant which includes the number of each dish we want, the dish name and a number at the end of the order showing the sum of the dishes we have ordered.(eg "1, burger, 2, fish, 3")
 
@@ -13,50 +12,43 @@ The message sent as the order, is first tested to check if the sum number at the
 
 If it is not equal, an error will be raised, otherwise a message will be sent to the customer saying that your order was confirmed and you will get the food in an hour from the ordering time.
 
-Something need to be done in future for the project:
+The Feature tests of our modelling will be written in irb:
 
-The process of receiving the order by message and handling it is not included here. We will make the order manually every time.
+At first, we should be able to create a customer with a phone number.
 
-We will write the irb tests(feature tests.)
+```irb ```
 
-require "./lib/customer.rb"
+```require "./lib/customer.rb"```
 
-customer = Customer.new(1234)
+```customer = Customer.new(1234)```
 
-,,,, Now we are able to make a customer with a phone number."
+In the next step, we must be able to make a restaurant.
 
+```require "./lib/restaurent.rb"```
 
-,,,, In the next step, we must be able to make a restaurant.
+```restaurant = Restaurent.new()```
 
-require "./lib/customer.rb"
-
-customer = Customer.new(1234)
-
-require "./lib/restaurent.rb"
-
-restaurant = Restaurent.new()
-
-,,,, In the next step, we should be able to add a food with its price to the
+In the next step, we should be able to add a food with its price to the
 restaurant's object and we can  see the restaurant's list of foods.
 
-require "./lib/restaurent.rb"
+```require "./lib/restaurent.rb"```
 
-restaurant = Restaurent.new()
+```restaurant = Restaurent.new()```
 
-restaurant.add("green dish","20")
+```restaurant.add("green dish","20")```
 
-restaurant.list()
+```restaurant.list() ```
 
-,,,, In the next step, we should be able to define an order_manager.
+In the next step, we should be able to define an order_manager.
 
-require "./lib/order_manager.rb"
+```require "./lib/order_manager.rb" ```
 
-order_manager = Order_manager.new()
+```order_manager = Order_manager.new()```
 
 In the next step, the order_manager should send a message to the customer and send
 the list of restaurant menu to the customer.
 
-order_manager.ask_order(restaurant, customer)
+```order_manager.ask_order(restaurant, customer)```
 
 
 1. My twilio phone number, my phone number, my twilio account_sid and my twilio auth_token are saved as environment variables to be secure for github publishing.
@@ -64,76 +56,70 @@ order_manager.ask_order(restaurant, customer)
 
 so the next feature test will be the below thing:
 
-require "./lib/customer.rb"
+```require "./lib/customer.rb"```
 
-customer = Customer.new(ENV['MY_NUMBER'])
+```customer = Customer.new(ENV['MY_NUMBER'])```
 
-require "./lib/restaurent.rb"
+```require "./lib/restaurent.rb"```
 
-restaurant = Restaurent.new()
+```restaurant = Restaurent.new()```
 
-restaurant.add("green dish","20")
+```restaurant.add("green dish","20")```
 
-require "./lib/order_manager.rb"
+```require "./lib/order_manager.rb"```
 
-order_manager = Order_manager.new()
+```order_manager = Order_manager.new()```
 
-order_manager.ask_order(restaurant, customer)
+```order_manager.ask_order(restaurant, customer)```
 
 After using the above commands in irb, I am supposed to receive a message on my phone, Asking me about the order I want to make. so, we command the code in "irb" to see what happens.
 
 After the previous steps, we suppose we have the order of a customer in a string including the number of each dish, name of dish, and finally the sum of the number of all dishes e.g. 1, meat dish, 2, pesceterian, 3. at first, we want an error when the sum of the dishes is not correct. so, as a feature test in irb, we will have the following:
 
-require "./lib/customer.rb"
+```require "./lib/customer.rb"```
 
-customer = Customer.new(ENV['MY_NUMBER'])
+```customer = Customer.new(ENV['MY_NUMBER'])```
 
-require "./lib/restaurent.rb"
+```require "./lib/restaurent.rb"```
 
-restaurant = Restaurant.new()
+```restaurant = Restaurent.new()```
 
-restaurant.add("green dish","20")
+```restaurant.add("green dish","20")```
 
-restaurant.add("meat dish","25")
+```restaurant.add("meat dish","25")```
 
-restaurant.add("red dish", "30")
+```restaurant.add("red dish", "30")```
 
-require "./lib/order_manager.rb"
+```require "./lib/order_manager.rb"```
 
-order_manager = Order_manager.new()
+```order_manager = Order_manager.new()```
 
-order_manager.confirmation_sending(restaurant,"1,green dish,2,meat dish,5")
+```order_manager.confirmation_sending(restaurant,"1,green dish,2,meat dish,5")```
 
 
 Now, we want to send a message to a customer and say the order was placed and the food will be delivered in 1 hour from now.
 
-require "./lib/customer.rb"
+```require "./lib/customer.rb"```
 
-customer = Customer.new(ENV['MY_NUMBER'])
+```customer = Customer.new(ENV['MY_NUMBER'])```
 
-require "./lib/order_manager.rb"
+```require "./lib/order_manager.rb"```
 
-restaurant = Order_manager.new()
+```restaurant = Order_manager.new()```
 
-require "./lib/restaurent.rb"
+```require "./lib/restaurent.rb"```
 
-restaurant = Restaurant.new()
+```restaurant = Restaurant.new()```
 
-restaurant.add("green dish","20")
+```restaurant.add("green dish","20")```
 
-restaurant.add("meat dish","25")
+```restaurant.add("meat dish","25")```
 
-restaurant.add("red dish", "30")
+```restaurant.add("red dish", "30")```
 
-order_manager.confirmation_sending(customer,  "1, meat dish, 4, pesceterian, 5")
+```order_manager.confirmation_sending(customer,  "1, meat dish, 4, pesceterian, 5")```
 
 After the above commands done on the irb, I should receive a message telling that my order was placed and it will be delivered in an hour.
-
-
-
-
-
-
 
 Challenge
 ==================
